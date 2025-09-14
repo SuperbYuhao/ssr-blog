@@ -3,7 +3,7 @@ import {
   type RenderToPipeableStreamOptions,
   renderToPipeableStream,
 } from 'react-dom/server'
-import App from './App'
+import App from '../pages/App.tsx'
 
 /*
   React SSR streaming with Suspense works by adding JS code to the end of the
