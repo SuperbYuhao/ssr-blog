@@ -1,0 +1,140 @@
+// 媒体查询区
+@xs: 480px; // 超小屏（老旧手机）
+@sm: 640px; // 小屏（现代手机竖屏）
+@md: 768px; // 平板竖屏/大手机横屏
+@lg: 1024px; // 平板横屏/小笔记本
+@xl: 1280px; // 普通桌面显示器
+@2xl: 1536px; // 大屏显示器
+@3xl: 2048px; // 大屏显示器
+@4k: 2560px; // 4K 设备
+
+.responsive(@property, @xs-mobile, @sm-mobile, @md-mobile, @lg-desktop, @xl-desktop, @2xl-desktop, @3xl-desktop, @4k-desktop) {
+  @{property}: @xs-mobile;
+
+  @media(min-width: @xs) {
+    @{property}: @xs-mobile
+  }
+
+  @media(min-width: @sm) {
+    @{property}: @sm-mobile
+  }
+
+  @media(min-width: @md) {
+    @{property}: @md-mobile
+  }
+
+  @media(min-width: @lg) {
+    @{property}: @lg-desktop
+  }
+
+  @media(min-width: @xl) {
+    @{property}: @xl-desktop
+  }
+
+  @media(min-width: @2xl) {
+    @{property}: @2xl-desktop
+  }
+
+  @media(min-width: @3xl) {
+    @{property}: @3xl-desktop
+  }
+
+  @media(min-width: @4k) {
+    @{property}: @4k-desktop
+  }
+}
+
+.hide-on-mobile() {
+  display: none;
+
+  @media (min-width: @xl) {
+    display: flex
+  }
+}
+
+.show-on-mobile() {
+  display: block;
+
+  @media (min-width: @xl) {
+    display: none
+  }
+}
+
+// 字体区
+@font-face {
+  font-family: 'WDXL';
+  src: url('/fonts/WDXLLubrifontSC-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-wdxl: 'WDXL', -apple-system, sans-serif;
+
+// 字体颜色区
+// 亮色模式变量 (默认)
+:root {
+  // 文字颜色
+  --text-primary: #333333;
+  --text-secondary: #555555;
+  --text-tertiary: #777777;
+
+  // 链接颜色
+  --link-color: #2563eb;
+  --link-hover-color: #1d4ed8;
+
+  // 边框颜色
+  --border-color: #e5e7eb;
+
+  // 背景色
+  --bg-primary: #ffffff;
+  --bg-secondary: #f3f4f6;
+
+  // 按钮颜色
+  --btn-primary: #2563eb;
+  --btn-primary-hover: #1d4ed8;
+}
+
+// 暗色模式变量
+.dark {
+  // 文字颜色 (使用较浅的颜色保证在深色背景上的可读性)
+  --text-primary: #e5e7eb;
+  --text-secondary: #d1d5db;
+  --text-tertiary: #9ca3af;
+
+  // 链接颜色 (使用更亮的蓝色保证可见性)
+  --link-color: #3b82f6;
+  --link-hover-color: #60a5fa;
+
+  // 边框颜色 (使用深灰色)
+  --border-color: #374151;
+
+  // 背景色 (与你的渐变背景协调)
+  --bg-primary: rgba(31, 41, 55, 0.8);
+  --bg-secondary: rgba(17, 24, 39, 0.8);
+
+  // 按钮颜色 (使用明亮的蓝色)
+  --btn-primary: #3b82f6;
+  --btn-primary-hover: #60a5fa;
+}
+
+// 下划线a标签样式
+.link-underline-effect {
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+  padding: 0 2px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background: #007bff;
+    transition: width 0.3s ease;
+  }
+
+  &:hover::after {
+    width: 80%;
+  }
+}

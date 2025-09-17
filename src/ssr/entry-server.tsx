@@ -4,6 +4,8 @@ import {
   renderToPipeableStream,
 } from 'react-dom/server'
 import App from '../pages/App.tsx'
+import '../styles/globals.less'
+import { StaticRouter } from 'react-router-dom'
 
 /*
   React SSR streaming with Suspense works by adding JS code to the end of the
@@ -27,7 +29,10 @@ import App from '../pages/App.tsx'
 export function render(_url: string, options?: RenderToPipeableStreamOptions) {
   return renderToPipeableStream(
     <StrictMode>
-      <App />
+      <StaticRouter location={_url}>
+        <App />
+      </StaticRouter>
+      {/* @ts-ignore */}
       <vite-streaming-end></vite-streaming-end>
     </StrictMode>,
     options,
